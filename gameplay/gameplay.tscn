@@ -344,6 +344,8 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_8u8o8")
 flip_h = true
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
 [node name="NewMaxHeightSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_qfpnv")
 

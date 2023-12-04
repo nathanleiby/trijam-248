@@ -44,12 +44,14 @@ func _physics_process(delta):
 
 	# Only allow jumping when on the ground
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		Sound.play_sfx($JumpSfx)
+		if randf() < 0.5:
+			Sound.play_sfx($JumpSfx)
+		else:
+			Sound.play_sfx($JumpSfx2)
 		velocity.y = jump_speed
 		
 	# put it below the character
 	if Input.is_action_just_pressed("place_platform"):
-		
 		if platforms_remaining <= 0:
 			Sound.play_sfx($NoPlatformsSfx)
 			return

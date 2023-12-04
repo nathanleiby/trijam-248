@@ -26,6 +26,7 @@ func _pause() -> void:
 
 func _ready():
 	timer.start()
+	Sound.play_music($Music) # TODO: No audio file added yet
 
 func _process(delta) -> void:
 	scoreLabel.text = "Height: %d" % ((character.position.y * -1) + score_offset)
