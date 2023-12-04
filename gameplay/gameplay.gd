@@ -39,4 +39,8 @@ func _on_timer_timeout():
 
 
 func _on_character_platform_created(height) -> void:
-	highest_platform_height = min(height, highest_platform_height)
+	if height < highest_platform_height:
+		highest_platform_height = height
+		Sound.play_sfx($NewMaxHeightSfx)
+	
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=14 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
 [ext_resource type="PackedScene" uid="uid://50axire65sjw" path="res://gameplay/platform.tscn" id="2_uwroh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://evn7j2vispb3" path="res://assets/kenney_pixel-platformer/Tiles/tile_0088.png" id="7_8u8o8"]
 [ext_resource type="Script" path="res://gameplay/GameOver.gd" id="7_lrxw4"]
 [ext_resource type="Texture2D" uid="uid://bstqk23tgmg4n" path="res://assets/kenney_pixel-platformer/Tiles/tile_0053.png" id="7_neood"]
+[ext_resource type="AudioStream" uid="uid://cbmna0ltpwsif" path="res://assets/sounds/Big Egg collect 1.wav" id="11_qfpnv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
 font_size = 72
@@ -342,6 +343,9 @@ position = Vector2(1264, 700)
 scale = Vector2(2, 2)
 texture = ExtResource("7_8u8o8")
 flip_h = true
+
+[node name="NewMaxHeightSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_qfpnv")
 
 [connection signal="platform_created" from="Character" to="." method="_on_character_platform_created"]
 [connection signal="timeout" from="GameTimer" to="GameOver" method="_on_game_timer_timeout"]
