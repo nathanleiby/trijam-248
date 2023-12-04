@@ -11,10 +11,19 @@ const PLATFORM_HEIGHT = 32
 const OFFSET = 4
 const DEATH_HEIGHT = 720
 
+const PLATFORMS_MAX = 3
+
+var platforms_remaining:
+	set(val):
+		platforms_remaining = val
+		$PlayerUI/PlatformsRemainingLabel.text = "Platforms = " + str(platforms_remaining)
+	
+
 var respawn_location: Vector2 
 
 func _ready() -> void:
 	respawn_location = position
+	platforms_remaining = PLATFORMS_MAX
 
 	
 func _physics_process(delta):
@@ -36,19 +45,25 @@ func _physics_process(delta):
 		velocity.y = jump_speed
 		
 	# put it below the character
-	if Input.is_action_just_pressed("place_item"):
+	if Input.is_action_just_pressed("place_platform"):
+		if platforms_remaining <= 0:
+			return
+			
+		platforms_remaining -= 1
+			
 		var platform = platformScene.instantiate()
 		add_child(platform)
 		
 		var y_offset = CHARACTER_HEIGHT / 2 + PLATFORM_HEIGHT / 2 + OFFSET
 		platform.position += Vector2(0, y_offset)
 		platform.reparent(get_tree().root)
+		
 	
 	if Input.is_action_just_pressed("reset"):
 		position = respawn_location
+		platforms_remaining = PLATFORMS_MAX
 	
 	if position.y >= DEATH_HEIGHT:
 		position = respawn_location
-	
-	
+
 
