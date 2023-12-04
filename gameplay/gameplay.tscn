@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=11 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
 [ext_resource type="PackedScene" uid="uid://50axire65sjw" path="res://gameplay/platform.tscn" id="2_uwroh"]
@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_w8wrl"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_7kf0b"]
 [ext_resource type="PackedScene" uid="uid://dqkm8vkxe0p1o" path="res://gameplay/wall.tscn" id="6_jtq6a"]
-[ext_resource type="Script" path="res://gameplay/GameOver.gd" id="7_lrxw4"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_f4krx"]
-font_size = 50
 [ext_resource type="Texture2D" uid="uid://evn7j2vispb3" path="res://assets/kenney_pixel-platformer/Tiles/tile_0088.png" id="7_8u8o8"]
+[ext_resource type="Script" path="res://gameplay/GameOver.gd" id="7_lrxw4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
 font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4krx"]
+font_size = 50
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_thqv1")
@@ -82,11 +82,11 @@ offset_bottom = 148.0
 
 [node name="ScoreLabel" type="Label" parent="UI/VBoxContainer"]
 layout_mode = 2
-text = "Height: 0"
+text = "Player Height: 0"
 
 [node name="MaxHeightLabel" type="Label" parent="UI/VBoxContainer"]
 layout_mode = 2
-text = "Max Height: 0"
+text = "Max Platform Height: 0"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI"]
 anchors_preset = 5
@@ -130,8 +130,6 @@ label_settings = SubResource("LabelSettings_f4krx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="GameTimer" to="GameOver" method="_on_game_timer_timeout"]
-
 [node name="MaxHeight" type="Sprite2D" parent="."]
 position = Vector2(16, 700)
 scale = Vector2(2, 2)
@@ -144,3 +142,4 @@ texture = ExtResource("7_8u8o8")
 flip_h = true
 
 [connection signal="platform_created" from="Character" to="." method="_on_character_platform_created"]
+[connection signal="timeout" from="GameTimer" to="GameOver" method="_on_game_timer_timeout"]

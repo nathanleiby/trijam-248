@@ -14,7 +14,7 @@ var highest_platform_height = INF:
 		highest_platform_height = val
 		$MaxHeight.position.y = highest_platform_height
 		$MaxHeight2.position.y = highest_platform_height
-		maxHeightLabel.text = "Max Height: %d" % (-highest_platform_height + score_offset)
+		maxHeightLabel.text = "Max Platform Height: %d" % (-highest_platform_height + score_offset)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("pause"):
