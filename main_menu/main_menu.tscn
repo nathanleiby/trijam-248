@@ -33,7 +33,7 @@ offset_right = 65.5
 offset_bottom = 135.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderLarge"
-text = "YOUR GAME"
+text = "FLYING SQUIRREL"
 horizontal_alignment = 1
 
 [node name="Credit" type="Label" parent="."]
@@ -46,28 +46,35 @@ offset_top = 156.0
 offset_right = 59.5
 offset_bottom = 182.0
 grow_horizontal = 2
-text = "A game by YOU"
+text = "Trijam 248 (\"Cycle repeats\")"
 
 [node name="Controls" type="Label" parent="."]
 layout_mode = 0
 offset_left = 843.0
-offset_top = 573.0
+offset_top = 541.0
 offset_right = 1251.0
-offset_bottom = 677.0
-text = "CONTROLS
-Move: WASD | Accept: J | Cancel: K | Pause: P
-Move: Arrow Keys | Accept: Z | Cancel: Z | Pause: Esc
-Gamepads work too!"
+offset_bottom = 697.0
+text = "Controls
+  Move Left = Left or A
+  Move Right = Right or D
+  Jump = Up or W
+  Build Platform = Space
+  Recycle = R"
 horizontal_alignment = 2
 
 [node name="Instructions" type="Label" parent="."]
 layout_mode = 0
 offset_left = 54.0
-offset_top = 570.0
-offset_right = 365.0
-offset_bottom = 674.0
-text = "INSTRUCTIONS
-Collect all the things!"
+offset_top = 538.0
+offset_right = 945.0
+offset_bottom = 699.0
+text = "Fly high! Your goal is to place platforms as high as possible within 90 seconds.
+
+The only problem: You can only place 3 platforms before you need to \"recycle\" and start again!
+ (Press \"R\" to recycle)
+
+Can you reach a height above 5000?"
+autowrap_mode = 3
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 0
