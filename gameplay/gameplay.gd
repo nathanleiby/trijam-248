@@ -5,7 +5,7 @@ extends Node2D
 @onready var character := $Character
 @onready var timer := $GameTimer
 
-var score_offset: int = 617
+@export var score_offset: int = 665
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("pause"):

@@ -87,6 +87,7 @@ text = "Countdown: 0"
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 120.0
+one_shot = true
 
 [node name="GameOver" type="Control" parent="."]
 layout_mode = 3
