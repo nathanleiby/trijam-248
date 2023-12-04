@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bquai0kn0d8cm"]
+
+[ext_resource type="Texture2D" uid="uid://bgprycbqd2tbx" path="res://assets/icon.svg" id="1_aooru"]
+[ext_resource type="PackedScene" uid="uid://50axire65sjw" path="res://gameplay/platform.tscn" id="2_1pdku"]
+[ext_resource type="Script" path="res://gameplay/character.gd" id="2_lr2ov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjgyv"]
+size = Vector2(128, 128)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_lr2ov")
+platformScene = ExtResource("2_1pdku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wjgyv")
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_aooru")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_right = 1280
+position_smoothing_enabled = true

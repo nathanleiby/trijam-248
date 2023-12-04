@@ -1,52 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=7 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
-[ext_resource type="Texture2D" uid="uid://bgprycbqd2tbx" path="res://assets/icon.svg" id="2_o7ako"]
+[ext_resource type="PackedScene" uid="uid://50axire65sjw" path="res://gameplay/platform.tscn" id="2_uwroh"]
+[ext_resource type="PackedScene" uid="uid://bquai0kn0d8cm" path="res://gameplay/character.tscn" id="3_dah5l"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_w8wrl"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_7kf0b"]
+[ext_resource type="PackedScene" uid="uid://dqkm8vkxe0p1o" path="res://gameplay/wall.tscn" id="6_4yesc"]
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_thqv1")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(655, 453)
-texture = ExtResource("2_o7ako")
+[node name="Platform" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(102, 698)
 
-[node name="Stack" type="VFlowContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 478.0
-offset_top = 115.0
-offset_right = 815.0
-offset_bottom = 722.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-metadata/_edit_group_ = true
+[node name="Platform2" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(388, 672)
 
-[node name="Title" type="Label" parent="Stack"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"HeaderLarge"
-text = "GAMEPLAY"
+[node name="Platform9" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(626, 661)
 
-[node name="Instructions" type="Label" parent="Stack"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "Get started with Godot Skeleton by replacing this Gameplay scene with your own."
-horizontal_alignment = 1
-autowrap_mode = 2
+[node name="Platform3" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(860, 614)
 
-[node name="PauseInstructions" type="Label" parent="Stack"]
-layout_mode = 2
-text = "Press START, P, or ESC to open pause menu."
-horizontal_alignment = 1
+[node name="Platform10" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(1025, 483)
 
-[node name="LinkButton" type="LinkButton" parent="Stack"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "View Template Source"
-uri = "https://github.com/brettchalupa/godot_skeleton"
+[node name="Platform4" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(718, 337)
+
+[node name="Platform5" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(517, 151)
+
+[node name="Platform6" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(264, -121)
+
+[node name="Platform7" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(974, -201)
+
+[node name="Platform8" parent="." instance=ExtResource("2_uwroh")]
+position = Vector2(388, -483)
+
+[node name="Character" parent="." instance=ExtResource("3_dah5l")]
+position = Vector2(104, 494)
 
 [node name="Paused" parent="." instance=ExtResource("3_w8wrl")]
 visible = false
