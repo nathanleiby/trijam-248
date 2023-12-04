@@ -16,7 +16,6 @@ func _pause() -> void:
 	get_tree().paused = true
 
 func _ready():
-	timer.timeout.connect(_on_timer_timeout) 
 	timer.start()
 
 func _process(delta) -> void:
@@ -25,5 +24,3 @@ func _process(delta) -> void:
 	var seconds = int(ceil(timer.time_left)) % 60
 	timerLabel.text = "Countdown: %d:%02d" % [minutes, seconds]
 	
-func _on_timer_timeout():
-	pass
