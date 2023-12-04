@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://50axire65sjw"]
+[gd_scene load_steps=3 format=3 uid="uid://50axire65sjw"]
+
+[ext_resource type="Texture2D" uid="uid://cfjg4lwbyvgw6" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_xxk2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilxvv"]
 size = Vector2(128, 32)
@@ -13,3 +15,10 @@ offset_left = -64.0
 offset_top = -16.0
 offset_right = 64.0
 offset_bottom = 16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.32458e-06, -0.194445)
+scale = Vector2(2.56, 2.31349)
+texture = ExtResource("1_xxk2u")
+region_enabled = true
+region_rect = Rect2(20, 2, 50, 14)

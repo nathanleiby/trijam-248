@@ -23,6 +23,11 @@ func _physics_process(delta):
 	# Input affects x axis only
 	velocity.x = Input.get_axis("walk_left", "walk_right") * speed
 
+	if velocity.x > 0:
+		$Character.flip_h = true
+	elif velocity.x < 0: 
+		$Character.flip_h = false
+		
 	move_and_slide()
 
 	# Only allow jumping when on the ground
