@@ -21,7 +21,9 @@ func _ready():
 
 func _process(delta) -> void:
 	scoreLabel.text = "Height: %d" % ((character.position.y * -1) + score_offset)
-	timerLabel.text = "Countdown: %d" % timer.time_left
+	var minutes =  ceil(timer.time_left) / 60
+	var seconds = int(ceil(timer.time_left)) % 60
+	timerLabel.text = "Countdown: %d:%02d" % [minutes, seconds]
 	
 func _on_timer_timeout():
 	pass
