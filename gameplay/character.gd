@@ -6,16 +6,17 @@ extends CharacterBody2D
 
 @export var platformScene: PackedScene
 
-
 const CHARACTER_HEIGHT = 128
 const PLATFORM_HEIGHT = 32
 const OFFSET = 4
+const DEATH_HEIGHT = 720
 
 var respawn_location: Vector2 
 
 func _ready() -> void:
 	respawn_location = position
 
+	
 func _physics_process(delta):
 	# Add gravity every frame
 	velocity.y += gravity * delta
@@ -44,6 +45,9 @@ func _physics_process(delta):
 		platform.reparent(get_tree().root)
 	
 	if Input.is_action_just_pressed("reset"):
+		position = respawn_location
+	
+	if position.y >= DEATH_HEIGHT:
 		position = respawn_location
 	
 	
