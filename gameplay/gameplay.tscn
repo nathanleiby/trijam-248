@@ -10,6 +10,10 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_f4krx"]
 font_size = 50
+[ext_resource type="Texture2D" uid="uid://evn7j2vispb3" path="res://assets/kenney_pixel-platformer/Tiles/tile_0088.png" id="7_8u8o8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
+font_size = 72
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_thqv1")
@@ -70,20 +74,34 @@ color = Color(0.156863, 0.290196, 0.658824, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ScoreLabel" type="Label" parent="UI"]
-offset_left = 25.0001
-offset_right = 95.0001
-offset_bottom = 30.0
-scale = Vector2(2.48846, 2.48846)
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+offset_left = 24.0
+offset_top = 14.0
+offset_right = 232.0
+offset_bottom = 148.0
+
+[node name="ScoreLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
 text = "Height: 0"
 
-[node name="TimerLabel" type="Label" parent="UI"]
-offset_left = 25.0001
-offset_top = 70.0
-offset_right = 133.0
-offset_bottom = 100.0
-scale = Vector2(2.48846, 2.48846)
-text = "Countdown: 0"
+[node name="MaxHeightLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Max Height: 0"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_right = 104.0
+offset_bottom = 134.0
+grow_horizontal = 2
+
+[node name="TimerLabel" type="Label" parent="UI/VBoxContainer2"]
+layout_mode = 2
+text = "0:00"
+label_settings = SubResource("LabelSettings_vpmae")
+horizontal_alignment = 1
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 120.0
@@ -113,3 +131,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="timeout" from="GameTimer" to="GameOver" method="_on_game_timer_timeout"]
+
+[node name="MaxHeight" type="Sprite2D" parent="."]
+position = Vector2(16, 700)
+scale = Vector2(2, 2)
+texture = ExtResource("7_8u8o8")
+
+[node name="MaxHeight2" type="Sprite2D" parent="."]
+position = Vector2(1264, 700)
+scale = Vector2(2, 2)
+texture = ExtResource("7_8u8o8")
+flip_h = true
+
+[connection signal="platform_created" from="Character" to="." method="_on_character_platform_created"]

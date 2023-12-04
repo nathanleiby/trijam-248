@@ -6,12 +6,14 @@ extends CharacterBody2D
 
 @export var platformScene: PackedScene
 
-const CHARACTER_HEIGHT = 128
+const CHARACTER_HEIGHT = 32
 const PLATFORM_HEIGHT = 32
 const OFFSET = 4
 const DEATH_HEIGHT = 720
 
 const PLATFORMS_MAX = 3
+
+signal platform_created(height)
 
 var platforms_remaining:
 	set(val):
@@ -57,6 +59,9 @@ func _physics_process(delta):
 		var y_offset = CHARACTER_HEIGHT / 2 + PLATFORM_HEIGHT / 2 + OFFSET
 		platform.position += Vector2(0, y_offset)
 		platform.reparent(get_tree().root)
+		
+		emit_signal("platform_created", platform.position.y)
+		
 		
 	
 	if Input.is_action_just_pressed("reset"):
