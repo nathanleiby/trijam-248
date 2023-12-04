@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=13 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
 [ext_resource type="PackedScene" uid="uid://50axire65sjw" path="res://gameplay/platform.tscn" id="2_uwroh"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_w8wrl"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_7kf0b"]
 [ext_resource type="PackedScene" uid="uid://dqkm8vkxe0p1o" path="res://gameplay/wall.tscn" id="6_jtq6a"]
+[ext_resource type="Texture2D" uid="uid://d0th8cxbe6lbt" path="res://assets/kenney_pixel-platformer/Tiles/tile_0073.png" id="7_5xv27"]
 [ext_resource type="Texture2D" uid="uid://evn7j2vispb3" path="res://assets/kenney_pixel-platformer/Tiles/tile_0088.png" id="7_8u8o8"]
 [ext_resource type="Script" path="res://gameplay/GameOver.gd" id="7_lrxw4"]
+[ext_resource type="Texture2D" uid="uid://bstqk23tgmg4n" path="res://assets/kenney_pixel-platformer/Tiles/tile_0053.png" id="7_neood"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
 font_size = 72
@@ -66,12 +68,6 @@ grow_vertical = 1
 [node name="Wall2" parent="." instance=ExtResource("6_jtq6a")]
 position = Vector2(1280, 2.08165e-12)
 
-[node name="Abyss" type="ColorRect" parent="."]
-offset_top = 720.0
-offset_right = 1280.0
-offset_bottom = 1720.0
-color = Color(0.156863, 0.290196, 0.658824, 1)
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
@@ -104,8 +100,216 @@ label_settings = SubResource("LabelSettings_vpmae")
 horizontal_alignment = 1
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 30.0
 one_shot = true
+autostart = true
+
+[node name="Water" type="Node2D" parent="."]
+position = Vector2(0, 710)
+scale = Vector2(6, 6)
+
+[node name="Column2" type="Node2D" parent="Water"]
+position = Vector2(18, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column2"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column2"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column2"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column1" type="Node2D" parent="Water"]
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column1"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column1"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column1"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column3" type="Node2D" parent="Water"]
+position = Vector2(36, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column3"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column3"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column3"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column4" type="Node2D" parent="Water"]
+position = Vector2(54, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column4"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column4"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column4"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column5" type="Node2D" parent="Water"]
+position = Vector2(72, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column5"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column5"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column5"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column6" type="Node2D" parent="Water"]
+position = Vector2(90, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column6"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column6"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column6"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column7" type="Node2D" parent="Water"]
+position = Vector2(108, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column7"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column7"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column7"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column8" type="Node2D" parent="Water"]
+position = Vector2(126, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column8"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column8"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column8"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column9" type="Node2D" parent="Water"]
+position = Vector2(144, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column9"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column9"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column9"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column10" type="Node2D" parent="Water"]
+position = Vector2(162, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column10"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column10"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column10"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column11" type="Node2D" parent="Water"]
+position = Vector2(180, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column11"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column11"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column11"]
+texture = ExtResource("7_neood")
+centered = false
+
+[node name="Column12" type="Node2D" parent="Water"]
+position = Vector2(198, 0)
+
+[node name="Tile-2" type="Sprite2D" parent="Water/Column12"]
+position = Vector2(0, 18)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile-3" type="Sprite2D" parent="Water/Column12"]
+position = Vector2(0, 36)
+texture = ExtResource("7_5xv27")
+centered = false
+
+[node name="Tile" type="Sprite2D" parent="Water/Column12"]
+texture = ExtResource("7_neood")
+centered = false
 
 [node name="GameOver" type="Control" parent="."]
 layout_mode = 3
@@ -115,6 +319,7 @@ offset_bottom = 40.0
 script = ExtResource("7_lrxw4")
 
 [node name="GameOverCanvas" type="CanvasLayer" parent="GameOver"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="GameOver/GameOverCanvas"]
 offset_right = 1280.0
