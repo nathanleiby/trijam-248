@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var gravity = 4000
 
 @export var platformScene: PackedScene
+@onready var raycast2d := $RayCast2D
 
 const CHARACTER_HEIGHT = 32
 const PLATFORM_HEIGHT = 32
@@ -27,6 +28,7 @@ func _ready() -> void:
 	respawn_location = position
 	platforms_remaining = PLATFORMS_MAX
 
+const BOUNCE_VELOCITY := 500
 	
 func _physics_process(delta):
 	# Add gravity every frame
@@ -40,8 +42,18 @@ func _physics_process(delta):
 	elif velocity.x < 0: 
 		$Character.flip_h = false
 		
-	move_and_slide()
-
+		
+	if velocity.y >= BOUNCE_VELOCITY:
+		var collision_info = move_and_collide(velocity * delta)
+		if collision_info:
+			var is_trampoline = collision_info.get_collider().has_method("is_trampoline")
+			if is_trampoline:
+				velocity = velocity.bounce(collision_info.get_normal())
+			else:
+				move_and_slide()
+	else:
+		move_and_slide()
+		
 	# Only allow jumping when on the ground
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		if randf() < 0.5:
