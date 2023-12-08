@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=17 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
 [ext_resource type="PackedScene" uid="uid://50axire65sjw" path="res://gameplay/platform.tscn" id="2_uwroh"]
@@ -12,7 +12,8 @@
 [ext_resource type="Script" path="res://gameplay/GameOver.gd" id="7_lrxw4"]
 [ext_resource type="Texture2D" uid="uid://bstqk23tgmg4n" path="res://assets/kenney_pixel-platformer/Tiles/tile_0053.png" id="7_neood"]
 [ext_resource type="AudioStream" uid="uid://cbmna0ltpwsif" path="res://assets/sounds/Big Egg collect 1.wav" id="11_qfpnv"]
-[ext_resource type="PackedScene" uid="uid://bvgb1firewiqq" path="res://gameplay/collectible.tscn" id="13_3h11y"]
+[ext_resource type="PackedScene" uid="uid://b4j5elvka8o5t" path="res://gameplay/portal.tscn" id="12_7w6ac"]
+[ext_resource type="PackedScene" path="res://gameplay/collectible.tscn" id="13_3h11y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
 font_size = 72
@@ -353,6 +354,11 @@ stream = ExtResource("11_qfpnv")
 
 [node name="Collectible" parent="." instance=ExtResource("13_3h11y")]
 position = Vector2(625, 630)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="portal" parent="." instance=ExtResource("12_7w6ac")]
+position = Vector2(1070, 450)
 
 [connection signal="platform_created" from="Character" to="." method="_on_character_platform_created"]
 [connection signal="timeout" from="GameTimer" to="GameOver" method="_on_game_timer_timeout"]

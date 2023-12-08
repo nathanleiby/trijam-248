@@ -4,9 +4,9 @@ extends CharacterBody2D
 @export var jump_speed = -1800
 @export var gravity = 4000
 
-@export var portalScene: PackedScene
 @export var platformScene: PackedScene
 @onready var raycast2d := $RayCast2D
+@export var portalScene: PackedScene
 
 const CHARACTER_HEIGHT = 32
 const PLATFORM_HEIGHT = 32
@@ -42,7 +42,8 @@ func _physics_process(delta):
 		$Character.flip_h = true
 	elif velocity.x < 0: 
 		$Character.flip_h = false
-
+		
+		
 	if velocity.y >= BOUNCE_VELOCITY:
 		var collision_info = move_and_collide(velocity * delta)
 		if collision_info:
@@ -92,6 +93,11 @@ func _physics_process(delta):
 		Sound.play_sfx($DieSfx)
 		reset()
 	
+	if Input.is_action_just_pressed("place_portal"):
+		print('placing portal')
+		var portal = portalScene.instantiate()
+		add_child(portal)
+		portal.position = position
 
 func reset():
 	position = respawn_location
