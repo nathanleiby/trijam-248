@@ -32,19 +32,6 @@ position_smoothing_enabled = true
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(2.08165e-12, 24)
 
-[node name="PlayerUI" type="CanvasLayer" parent="."]
-
-[node name="PlatformsRemainingLabel" type="Label" parent="PlayerUI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -96.0
-offset_top = 13.0
-offset_right = -34.0
-offset_bottom = 39.0
-grow_horizontal = 0
-text = "Items: 5"
-
 [node name="JumpSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0waek")
 

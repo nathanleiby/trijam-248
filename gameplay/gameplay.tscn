@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bstqk23tgmg4n" path="res://assets/kenney_pixel-platformer/Tiles/tile_0053.png" id="7_neood"]
 [ext_resource type="AudioStream" uid="uid://cbmna0ltpwsif" path="res://assets/sounds/Big Egg collect 1.wav" id="11_qfpnv"]
 [ext_resource type="PackedScene" uid="uid://b4j5elvka8o5t" path="res://gameplay/portal.tscn" id="12_7w6ac"]
-[ext_resource type="PackedScene" uid="uid://bvgb1firewiqq" path="res://gameplay/collectible.tscn" id="13_3h11y"]
+[ext_resource type="PackedScene" path="res://gameplay/collectible.tscn" id="13_3h11y"]
 [ext_resource type="AudioStream" uid="uid://dnfr7a6ixfh4f" path="res://assets/sounds/Picked Coin Echo 2.wav" id="15_6tpcq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
@@ -100,6 +100,16 @@ layout_mode = 2
 text = "0:00"
 label_settings = SubResource("LabelSettings_vpmae")
 horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI"]
+offset_left = 1054.0
+offset_top = 6.0
+offset_right = 1262.0
+offset_bottom = 108.0
+
+[node name="PlatformsRemainingLabel" type="Label" parent="UI/VBoxContainer3"]
+layout_mode = 2
+text = "Items: 5"
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 90.0

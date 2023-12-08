@@ -20,7 +20,7 @@ signal platform_created(height)
 var platforms_remaining:
 	set(val):
 		platforms_remaining = val
-		$PlayerUI/PlatformsRemainingLabel.text = "Platforms = " + str(platforms_remaining)
+		Events.platform_number_set.emit(val)
 
 
 @export var respawn_location: Vector2
