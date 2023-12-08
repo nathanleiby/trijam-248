@@ -20,6 +20,7 @@ config/icon="res://assets/icon.svg"
 
 Global="*res://global.gd"
 Sound="*res://sound.gd"
+Events="*res://events.gd"
 
 [display]
 

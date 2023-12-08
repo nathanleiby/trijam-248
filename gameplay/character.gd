@@ -42,8 +42,7 @@ func _physics_process(delta):
 		$Character.flip_h = true
 	elif velocity.x < 0: 
 		$Character.flip_h = false
-		
-		
+
 	if velocity.y >= BOUNCE_VELOCITY:
 		var collision_info = move_and_collide(velocity * delta)
 		if collision_info:

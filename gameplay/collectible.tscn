@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvgb1firewiqq"]
+
+[ext_resource type="Texture2D" uid="uid://ddnkhkk5w0fun" path="res://assets/kenney_pixel-platformer/Tiles/tile_0044.png" id="1_0jmc5"]
+[ext_resource type="Script" path="res://gameplay/collectible.gd" id="1_oep6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwovu"]
+size = Vector2(16, 16)
+
+[node name="Collectible" type="Node2D"]
+script = ExtResource("1_oep6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0jmc5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xwovu")

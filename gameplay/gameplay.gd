@@ -4,7 +4,7 @@ extends Node2D
 @onready var maxHeightLabel := $UI/VBoxContainer/MaxHeightLabel
 @onready var timerLabel := $UI/VBoxContainer2/TimerLabel
 @onready var character := $Character
-@onready var timer := $GameTimer
+@onready var timer: Timer = $GameTimer
 
 
 @export var score_offset: int = 665
@@ -28,6 +28,8 @@ func _ready():
 	timer.start()
 	Sound.play_music($Music) # TODO: No audio file added yet
 
+	Events.connect("time_collected", _on_time_collected)
+
 func _process(delta) -> void:
 	scoreLabel.text = "Height: %d" % ((character.position.y * -1) + score_offset)
 
@@ -44,4 +46,6 @@ func _on_character_platform_created(height) -> void:
 		highest_platform_height = height
 		Sound.play_sfx($NewMaxHeightSfx)
 	
-	
+func _on_time_collected(seconds: float):
+	print("ON TIME COLLECTED:", seconds)
+	timer.wait_time += seconds

@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://gameplay/GameOver.gd" id="7_lrxw4"]
 [ext_resource type="Texture2D" uid="uid://bstqk23tgmg4n" path="res://assets/kenney_pixel-platformer/Tiles/tile_0053.png" id="7_neood"]
 [ext_resource type="AudioStream" uid="uid://cbmna0ltpwsif" path="res://assets/sounds/Big Egg collect 1.wav" id="11_qfpnv"]
-[ext_resource type="PackedScene" uid="uid://b4j5elvka8o5t" path="res://gameplay/portal.tscn" id="12_7w6ac"]
+[ext_resource type="PackedScene" uid="uid://bvgb1firewiqq" path="res://gameplay/collectible.tscn" id="13_3h11y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
 font_size = 72
@@ -57,7 +57,6 @@ position = Vector2(391, 679)
 
 [node name="Character" parent="." instance=ExtResource("3_dah5l")]
 position = Vector2(104, 494)
-portalScene = ExtResource("2_uwroh")
 
 [node name="Paused" parent="." instance=ExtResource("3_w8wrl")]
 visible = false
@@ -352,10 +351,8 @@ flip_h = true
 [node name="NewMaxHeightSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_qfpnv")
 
-[node name="Portals" type="Node2D" parent="."]
-
-[node name="portal" parent="Portals" instance=ExtResource("12_7w6ac")]
-position = Vector2(1083, 443)
+[node name="Collectible" parent="." instance=ExtResource("13_3h11y")]
+position = Vector2(625, 630)
 
 [connection signal="platform_created" from="Character" to="." method="_on_character_platform_created"]
 [connection signal="timeout" from="GameTimer" to="GameOver" method="_on_game_timer_timeout"]
