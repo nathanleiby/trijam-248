@@ -45,7 +45,7 @@ func _on_character_platform_created(height) -> void:
 	if height < highest_platform_height:
 		highest_platform_height = height
 		Sound.play_sfx($NewMaxHeightSfx)
-	
+
 func _on_time_collected(seconds: float):
-	print("ON TIME COLLECTED:", seconds)
 	timer.wait_time += seconds
+	timer.start() # required to reset timer to new wait_time
