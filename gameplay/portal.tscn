@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4j5elvka8o5t"]
+
+[ext_resource type="Texture2D" uid="uid://dqgyxd7ubq5es" path="res://assets/kenney_pixel-platformer/Tiles/tile_0180.png" id="2_r2hof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yono1"]
+size = Vector2(32, 32)
+
+[node name="portal" type="Node2D"]
+z_index = -1
+
+[node name="PortalHitArea" type="Area2D" parent="."]
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalHitArea"]
+shape = SubResource("RectangleShape2D_yono1")
+
+[node name="Sprite2D" type="Sprite2D" parent="PortalHitArea"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_r2hof")
+
+[connection signal="area_entered" from="PortalHitArea" to="." method="_on_hit_area_area_entered"]

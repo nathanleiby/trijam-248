@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var jump_speed = -1800
 @export var gravity = 4000
 
+@export var portalScene: PackedScene
 @export var platformScene: PackedScene
 @onready var raycast2d := $RayCast2D
 
@@ -22,7 +23,7 @@ var platforms_remaining:
 		$PlayerUI/PlatformsRemainingLabel.text = "Platforms = " + str(platforms_remaining)
 	
 
-var respawn_location: Vector2 
+@export var respawn_location: Vector2 
 
 func _ready() -> void:
 	respawn_location = position
@@ -91,9 +92,15 @@ func _physics_process(delta):
 	if position.y >= DEATH_HEIGHT:
 		Sound.play_sfx($DieSfx)
 		reset()
-		
+	
+
 func reset():
 	position = respawn_location
 	platforms_remaining = PLATFORMS_MAX
+	velocity = Vector2(0, 0)
 
 
+func _on_area_2d_area_entered(area):
+	# if the collision is with a portal, respawn the character
+	if area.name == "PortalHitArea":
+		reset()
