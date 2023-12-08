@@ -47,5 +47,6 @@ func _on_character_platform_created(height) -> void:
 		Sound.play_sfx($NewMaxHeightSfx)
 
 func _on_time_collected(seconds: float):
+	Sound.play_sfx($Sfx/Collectible)
 	timer.wait_time += seconds
 	timer.start() # required to reset timer to new wait_time

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=18 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
 [ext_resource type="PackedScene" uid="uid://50axire65sjw" path="res://gameplay/platform.tscn" id="2_uwroh"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cbmna0ltpwsif" path="res://assets/sounds/Big Egg collect 1.wav" id="11_qfpnv"]
 [ext_resource type="PackedScene" uid="uid://b4j5elvka8o5t" path="res://gameplay/portal.tscn" id="12_7w6ac"]
 [ext_resource type="PackedScene" uid="uid://bvgb1firewiqq" path="res://gameplay/collectible.tscn" id="13_3h11y"]
+[ext_resource type="AudioStream" uid="uid://dnfr7a6ixfh4f" path="res://assets/sounds/Picked Coin Echo 2.wav" id="15_6tpcq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
 font_size = 72
@@ -359,6 +360,11 @@ position = Vector2(625, 630)
 
 [node name="portal" parent="." instance=ExtResource("12_7w6ac")]
 position = Vector2(1070, 450)
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Collectible" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("15_6tpcq")
 
 [connection signal="platform_created" from="Character" to="." method="_on_character_platform_created"]
 [connection signal="timeout" from="GameTimer" to="GameOver" method="_on_game_timer_timeout"]
