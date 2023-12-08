@@ -21,16 +21,16 @@ var platforms_remaining:
 	set(val):
 		platforms_remaining = val
 		$PlayerUI/PlatformsRemainingLabel.text = "Platforms = " + str(platforms_remaining)
-	
 
-@export var respawn_location: Vector2 
+
+@export var respawn_location: Vector2
 
 func _ready() -> void:
 	respawn_location = position
 	platforms_remaining = PLATFORMS_MAX
 
 const BOUNCE_VELOCITY := 500
-	
+
 func _physics_process(delta):
 	# Add gravity every frame
 	velocity.y += gravity * delta
@@ -40,21 +40,20 @@ func _physics_process(delta):
 
 	if velocity.x > 0:
 		$Character.flip_h = true
-	elif velocity.x < 0: 
+	elif velocity.x < 0:
 		$Character.flip_h = false
-		
-		
+
+
 	if velocity.y >= BOUNCE_VELOCITY:
 		var collision_info = move_and_collide(velocity * delta)
 		if collision_info:
-			var is_trampoline = collision_info.get_collider().has_method("is_trampoline")
-			if is_trampoline:
+			if collision_info.get_collider() is Trampoline:
 				velocity = velocity.bounce(collision_info.get_normal())
 			else:
 				move_and_slide()
 	else:
 		move_and_slide()
-		
+
 	# Only allow jumping when on the ground
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		if randf() < 0.5:
@@ -62,37 +61,37 @@ func _physics_process(delta):
 		else:
 			Sound.play_sfx($JumpSfx2)
 		velocity.y = jump_speed
-		
+
 	# put it below the character
 	if Input.is_action_just_pressed("place_platform"):
 		if platforms_remaining <= 0:
 			Sound.play_sfx($NoPlatformsSfx)
 			return
-		
-		Sound.play_sfx($PlacePlatformSfx)	
+
+		Sound.play_sfx($PlacePlatformSfx)
 		platforms_remaining -= 1
-			
+
 		var platform = platformScene.instantiate()
 		add_child(platform)
-		
+
 		var y_offset = CHARACTER_HEIGHT / 2 + PLATFORM_HEIGHT / 2 + OFFSET
 		platform.position += Vector2(0, y_offset)
 		platform.reparent(get_tree().root)
-		
+
 		emit_signal("platform_created", platform.position.y)
-		
-		
-	
+
+
+
 	if Input.is_action_just_pressed("reset"):
 		# TODO: play "warping" sound
 		Sound.play_sfx($WarpSfx)
 		reset()
-		
-	
+
+
 	if position.y >= DEATH_HEIGHT:
 		Sound.play_sfx($DieSfx)
 		reset()
-	
+
 	if Input.is_action_just_pressed("place_portal"):
 		print('placing portal')
 		var portal = portalScene.instantiate()

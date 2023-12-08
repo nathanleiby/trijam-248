@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bstqk23tgmg4n" path="res://assets/kenney_pixel-platformer/Tiles/tile_0053.png" id="7_neood"]
 [ext_resource type="AudioStream" uid="uid://cbmna0ltpwsif" path="res://assets/sounds/Big Egg collect 1.wav" id="11_qfpnv"]
 [ext_resource type="PackedScene" uid="uid://b4j5elvka8o5t" path="res://gameplay/portal.tscn" id="12_7w6ac"]
-[ext_resource type="PackedScene" path="res://gameplay/collectible.tscn" id="13_3h11y"]
+[ext_resource type="PackedScene" uid="uid://bvgb1firewiqq" path="res://gameplay/collectible.tscn" id="13_3h11y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vpmae"]
 font_size = 72
